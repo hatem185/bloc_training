@@ -4,20 +4,20 @@ import 'package:bloc_training_app/features/meme/data/repo/meme_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-part 'meme_state.dart';
+part 'random_meme_state.dart';
 
-class MemeCubit extends Cubit<MemeState> {
+class RandomMemeCubit extends Cubit<RandomMemeState> {
   final MemeRepo _repo;
 
-  MemeCubit(this._repo) : super(MemeInitial());
+  RandomMemeCubit(this._repo) : super(MemeInitial());
 
   void getRandomMeme() async {
-    emit(MemeLoading());
+    emit(RandomMemeLoading());
     final result = await _repo.getRandomMeme();
     if (result == null) {
-      emit(MemeError("Meme not found."));
+      emit(RandomMemeError("Meme not found."));
       return;
     }
-    emit(MemeSuccess(result));
+    emit(RandomMemeSuccess(result));
   }
 }

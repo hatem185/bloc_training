@@ -1,36 +1,36 @@
-part of 'meme_cubit.dart';
+part of 'random_meme_cubit.dart';
 
 @immutable
-sealed class MemeState extends Equatable{
+sealed class RandomMemeState extends Equatable{
 
 }
 
-final class MemeInitial extends MemeState {
+final class MemeInitial extends RandomMemeState {
   @override
   // TODO: implement props
   List<Object?> get props => [];
 }
 
-final class MemeLoading extends MemeState {
+final class RandomMemeLoading extends RandomMemeState {
   @override
   // TODO: implement props
   List<Object?> get props => [];
 }
 
-final class MemeSuccess extends MemeState {
+final class RandomMemeSuccess extends RandomMemeState {
   final MemeModel meme;
 
-  MemeSuccess(this.meme);
+  RandomMemeSuccess(this.meme);
 
   @override
   // TODO: implement props
   List<Object?> get props => [meme];
 }
 
-final class MemeError extends MemeState {
+final class RandomMemeError extends RandomMemeState {
   final String? message;
 
-  MemeError(this.message);
+  RandomMemeError(this.message);
 
   @override
   // TODO: implement props
