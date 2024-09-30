@@ -27,13 +27,4 @@ class MemeResponseModel {
         count: count ?? this.count,
         memes: memes ?? this.memes,
       );
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['count'] = count;
-    if (memes != null) {
-      map['memes'] = memes?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
 }

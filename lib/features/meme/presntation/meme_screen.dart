@@ -48,6 +48,7 @@ class MemeScreenView extends StatelessWidget {
                   }
                   if (state is MemeSuccess) {
                     final meme = state.meme;
+                    final isSpoiler = meme.spoiler == true;
                     return Card(
                       color: Colors.amberAccent[200],
                       child: Padding(
@@ -58,7 +59,25 @@ class MemeScreenView extends StatelessWidget {
                             style: TextStyle(fontSize: 26),
                           ),
                           subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Chip(
+                                color: WidgetStateProperty.all(
+                                  isSpoiler
+                                      ? Colors.redAccent
+                                      : Colors.green[400],
+                                ),
+                                label: Text(
+                                  isSpoiler ? "Spoiler" : "Not Spoiler",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Colors.transparent,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                              ),
                               Row(
                                 children: [
                                   Text(
@@ -87,7 +106,7 @@ class MemeScreenView extends StatelessWidget {
                               Gap(16),
                               CachedNetworkImage(
                                 height: 350,
-                                fit: BoxFit.fitHeight,
+                                fit: BoxFit.fill,
                                 imageUrl: meme.url ?? "",
                                 placeholder: (context, url) {
                                   return CircularProgressIndicator();

@@ -13,27 +13,15 @@ class MemeModel extends Equatable {
     this.preview,
   });
 
-  MemeModel.fromJson(Map<String, dynamic> json) {
-    postLink = json['postLink'];
-    subreddit = json['subreddit'];
-    title = json['title'];
-    url = json['url'];
-    nsfw = json['nsfw'];
-    spoiler = json['spoiler'];
-    author = json['author'];
-    ups = json['ups'];
-    preview = json['preview'] != null ? json['preview'].cast<String>() : [];
-  }
-
-  String? postLink;
-  String? subreddit;
-  String? title;
-  String? url;
-  bool? nsfw;
-  bool? spoiler;
-  String? author;
-  num? ups;
-  List<String>? preview;
+  final String? postLink;
+  final String? subreddit;
+  final String? title;
+  final String? url;
+  final bool? nsfw;
+  final bool? spoiler;
+  final String? author;
+  final num? ups;
+  final List<String>? preview;
 
   MemeModel copyWith({
     String? postLink,
@@ -58,18 +46,21 @@ class MemeModel extends Equatable {
         preview: preview ?? this.preview,
       );
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['postLink'] = postLink;
-    map['subreddit'] = subreddit;
-    map['title'] = title;
-    map['url'] = url;
-    map['nsfw'] = nsfw;
-    map['spoiler'] = spoiler;
-    map['author'] = author;
-    map['ups'] = ups;
-    map['preview'] = preview;
-    return map;
+  factory MemeModel.fromJson(Map<String, dynamic> json) {
+    return MemeModel(
+      postLink: json["postLink"],
+      subreddit: json["subreddit"],
+      title: json["title"],
+      url: json["url"],
+      nsfw: json["nsfw"],
+      spoiler: json["spoiler"],
+      author: json["author"],
+      ups: json["ups"],
+      preview: List.of(json["preview"])
+          .where((e) => e != null)
+          .map((e) => e.toString())
+          .toList(),
+    );
   }
 
   @override
