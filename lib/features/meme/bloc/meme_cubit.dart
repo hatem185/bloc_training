@@ -19,6 +19,5 @@ class MemeCubit extends Cubit<MemeState> {
       return;
     }
     emit(MemeSuccess(result));
-
   }
 }
