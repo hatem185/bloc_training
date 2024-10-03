@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_training_app/core/di/dependency_injection.dart';
 import 'package:bloc_training_app/features/meme/data/model/meme_response.dart';
 import 'package:bloc_training_app/features/meme/data/repo/meme_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -9,7 +10,11 @@ part 'memes_state.dart';
 class MemesCubit extends Cubit<MemesState> {
   final MemeRepo _repo;
 
-  MemesCubit(this._repo) : super(MemesInitial());
+  MemesCubit()
+      : _repo = getIt<MemeRepo>(),
+        super(MemesInitial()) {
+    fetchMemes();
+  }
 
   void fetchMemes() async {
     emit(MemesLoading());

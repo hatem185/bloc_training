@@ -1,10 +1,7 @@
 import 'package:bloc_training_app/features/meme/cubit/random_meme_cubit/random_meme_cubit.dart';
-import 'package:bloc_training_app/features/meme/data/model/meme_model.dart';
-import 'package:bloc_training_app/features/meme/presntation/widgets/meme_post_card.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:bloc_training_app/features/meme/presentation/widgets/meme_post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 class RandomMemeScreenView extends StatelessWidget {
   const RandomMemeScreenView({super.key});

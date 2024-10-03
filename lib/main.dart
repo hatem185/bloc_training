@@ -1,7 +1,9 @@
-import 'package:bloc_training_app/features/meme/presntation/meme_screen.dart';
+import 'package:bloc_training_app/core/di/dependency_injection.dart';
+import 'package:bloc_training_app/features/meme/presentation/screens/meme_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  initLocator();
   runApp(const MainApp());
 }
 

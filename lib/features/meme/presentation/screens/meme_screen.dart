@@ -1,10 +1,7 @@
 import 'package:bloc_training_app/features/meme/cubit/memes_cubit/memes_cubit.dart';
 import 'package:bloc_training_app/features/meme/cubit/random_meme_cubit/random_meme_cubit.dart';
-import 'package:bloc_training_app/features/meme/data/repo/meme_api_data_provider.dart';
-import 'package:bloc_training_app/features/meme/data/repo/meme_repo.dart';
-import 'package:bloc_training_app/features/meme/presntation/memes_screen_view.dart';
-import 'package:bloc_training_app/features/meme/presntation/random_meme_screen_view.dart';
-import 'package:dio/dio.dart';
+import 'package:bloc_training_app/features/meme/presentation/screens/memes_screen_view.dart';
+import 'package:bloc_training_app/features/meme/presentation/screens/random_meme_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,22 +13,10 @@ class MemeScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => RandomMemeCubit(
-            MemeRepo(
-              MemeApiDataProvider(
-                Dio(),
-              ),
-            ),
-          )..getRandomMeme(),
+          create: (context) => RandomMemeCubit(),
         ),
         BlocProvider(
-          create: (context) => MemesCubit(
-            MemeRepo(
-              MemeApiDataProvider(
-                Dio(),
-              ),
-            ),
-          )..fetchMemes(),
+          create: (context) => MemesCubit(),
         ),
       ],
       child: const MemeTapView(),

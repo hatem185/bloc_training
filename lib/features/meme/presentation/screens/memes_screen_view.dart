@@ -1,5 +1,5 @@
 import 'package:bloc_training_app/features/meme/cubit/memes_cubit/memes_cubit.dart';
-import 'package:bloc_training_app/features/meme/presntation/widgets/meme_post_card.dart';
+import 'package:bloc_training_app/features/meme/presentation/widgets/meme_post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +25,7 @@ class MemesScreenView extends StatelessWidget {
                   return Expanded(
                     child: ListView.separated(
                         itemBuilder: (context, index) {
-                          final meme = state.memeResponse?.memes?[index];
+                          final meme = state.memeResponse.memes?[index];
                           final isSpoiler = meme?.spoiler == true;
                           return MemePostCard(
                             meme: meme!,

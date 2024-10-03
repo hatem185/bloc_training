@@ -5,7 +5,9 @@ import 'package:bloc_training_app/features/meme/data/repo/meme_api_data_provider
 class MemeRepo {
   final MemeApiDataProvider _dataProvider;
 
-  const MemeRepo(this._dataProvider);
+  MemeRepo(this._dataProvider) {
+    print("MemeRepo");
+  }
 
   Future<MemeModel?> getRandomMeme() async {
     return await _dataProvider.getRandomMeme();

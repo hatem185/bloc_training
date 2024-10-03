@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class MemeModel extends Equatable {
-  MemeModel({
+  const MemeModel({
     this.postLink,
     this.subreddit,
     this.title,
